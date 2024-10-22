@@ -6,6 +6,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import from_json
 from pyspark.sql.types import StructType, StructField, StringType
 from bs4 import BeautifulSoup
+import pymongo
 
 def parse_medium_story_text(link):
     response = requests.get(link)
@@ -63,16 +64,17 @@ def main():
         auto_offset_reset='earliest',
         max_poll_interval_ms=1000
     )
+    client = pymongo.MongoClient('mongodb://localhost:27017')
+    db = client['test_db']
+    collection = db['collection']
 
     count = 0
     # Consume messages and print their values
     for message in consumer:
         print("Message value:", message.value)
+        insert_result = collection.insert_one(json.loads(message.value))
         count += 1
         print('Total number of messages:', count)
-
-    # Optionally run Spark consumer app if needed
-    # run_spark_consumer_app(topic, KAFKA_BROKER)
 
 if __name__ == '__main__':
     # logging.basicConfig(level="DEBUG")
