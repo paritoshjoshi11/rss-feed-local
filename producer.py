@@ -34,7 +34,7 @@ def fetch_rss_data(url,date_format,last_event_pubdate,topic,producer):
             print('Event sent:')
             print(item)
         else :
-            break
+            print("No new events!!")
         return new_event_pubdate
 
 
