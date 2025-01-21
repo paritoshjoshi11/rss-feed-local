@@ -57,6 +57,7 @@ def main():
     topic = 'rss_feed_topic'
 
     # Using KafkaConsumer to consume messages directly
+    print('Starting Kafka consumer...')
     consumer = KafkaConsumer(
         topic,
         bootstrap_servers=KAFKA_BROKER,
