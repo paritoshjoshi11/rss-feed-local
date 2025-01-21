@@ -59,6 +59,7 @@ def main():
     # Using KafkaConsumer to consume messages directly
     print('Starting Kafka consumer...')
     print('test 12112')
+    print('test to add something to consumer of branch testbranch 19 and main branch is ahead')
     consumer = KafkaConsumer(
         topic,
         bootstrap_servers=KAFKA_BROKER,
