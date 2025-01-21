@@ -43,6 +43,7 @@ def main():
     topic='rss_feed_topic'
     # Starting parsing from current date midnight
     print(" test print")
+    print('test 1911')
     DATE_FORMAT = "%a, %d %b %Y %H:%M:%S %Z"
     last_event_pubdate = (datetime.now() - timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
     producer = KafkaProducer(
